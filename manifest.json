@@ -1,0 +1,34 @@
+{
+  "name": "saramin",
+  "version": "1.0.0",
+  "description": "saramin의 버그를 수정하고, 필요시 기능을 확장하기 위함.\n[github](https://github.com/jjangga0214/chrome-extension-saramin)",
+  "permissions": [
+    "activeTab",
+    "declarativeContent",
+    "storage"
+  ],
+  "background": {
+    "scripts": [
+      "background.js"
+    ],
+    "persistent": false
+  },
+  "page_action": {
+    "default_icon": {
+      "32": "favicon.png"
+    }
+  },
+  "icons": {
+    "32": "favicon.png"
+  },
+  "commands": {
+    "candidate-contact-load": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+Z",
+        "mac": "Command+Shift+Z"
+      },
+      "description": "load candidate data by using `usemandb('candidateid')` of original saramin context"
+    }
+  },
+  "manifest_version": 2
+}
