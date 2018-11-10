@@ -28,6 +28,20 @@
         "mac": "Command+Shift+Z"
       },
       "description": "load candidate data by using `usemandb('candidateid')` of original saramin context"
+    },
+    "candidate-email-copy": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+S",
+        "mac": "Command+Shift+S"
+      },
+      "description": "copy a candidate's email to clipboard"
+    },
+    "candidate-phone-copy": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+X",
+        "mac": "Command+Shift+X "
+      },
+      "description": "copy a candidate's phone number to clipboard"
     }
   },
   "manifest_version": 2
