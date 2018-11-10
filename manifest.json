@@ -1,6 +1,6 @@
 {
   "name": "saramin",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "saramin의 버그를 수정하고, 필요시 기능을 확장하기 위함.\n[github](https://github.com/jjangga0214/chrome-extension-saramin)",
   "permissions": [
     "activeTab",
@@ -23,31 +23,31 @@
   "commands": {
     "candidate-contact-load": {
       "suggested_key": {
-        "default": "Ctrl+Shift+Z",
-        "mac": "Command+Shift+Z"
+        "default": "Alt+Z",
+        "mac": "Alt+Z"
       },
       "description": "load candidate data by using `usemandb('candidateid')` of original saramin context"
     },
     "candidate-email-copy": {
       "suggested_key": {
-        "default": "Ctrl+Shift+S",
-        "mac": "Command+Shift+S"
+        "default": "Alt+S",
+        "mac": "Alt+S"
       },
       "description": "copy a candidate's email to clipboard"
     },
     "candidate-phone-copy": {
       "suggested_key": {
-        "default": "Ctrl+Shift+X",
-        "mac": "Command+Shift+X "
+        "default": "Alt+X",
+        "mac": "Alt+X "
       },
       "description": "copy a candidate's phone number to clipboard"
     },
-    "_execute_browser_action": {
+    "candidate-all-copy": {
       "suggested_key": {
-        "default": "Ctrl+Shift+F",
-        "mac": "MacCtrl+Shift+F"
+        "default": "Alt+A",
+        "mac": "Alt+A "
       },
-      "description": "Opens popip.html"
+      "description": "copy a candidate's email and phone number to clipboard with tab space between them"
     }
   },
   "manifest_version": 2

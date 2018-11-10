@@ -1,17 +1,5 @@
 chrome.runtime.onInstalled.addListener(() => {
     console.log('chrome-extension-saramin: background.js is loaded');
-    chrome.declarativeContent.onPageChanged.removeRules(undefined, () => {
-        //hostEquals: 'developer.chrome.com',
-        chrome.declarativeContent.onPageChanged.addRules([{
-            conditions: [new chrome.declarativeContent.PageStateMatcher({
-                pageUrl: {
-                    hostEquals: 'www.saramin.co.kr',
-                },
-            })
-            ],
-            actions: [new chrome.declarativeContent.ShowPageAction()]
-        }]);
-    });
 });
 
 function executeOnDOM(code) {
@@ -58,8 +46,10 @@ function copy(parsingCode) {
     executeOnDOM(code);
 }
 
-function copyCandidateEmail() {
-    const parsingCode = `
+
+const codes = {
+    emailParsingCode() {
+        return `
     (function(){
         var element = document.querySelector('li.mail>span');
         if(!element){
@@ -67,12 +57,9 @@ function copyCandidateEmail() {
         }
         return element.innerHTML;
     })();`;
-
-    copy(parsingCode);
-}
-
-function copyCandidatePhone() {
-    const code = `
+    },
+    phoneParsingCode() {
+        return `
     (function(){
         var element = document.querySelector('a[resume-action="sendSMS"]')||document.querySelector('li.tel>span');
         if(!element){
@@ -80,13 +67,36 @@ function copyCandidatePhone() {
         }
         return element.innerHTML;
     })();`;
-    copy(code);
+
+    }
+}
+
+function copyCandidateEmail() {
+    const parsingCode = codes.emailParsingCode();
+    copy(parsingCode);
+}
+
+function copyCandidatePhone() {
+    const parsingCode = codes.phoneParsingCode();
+    copy(parsingCode);
+}
+
+function copyCandidateInfo() {
+    const parsingCode = `
+    (function(){
+        var email = ${codes.emailParsingCode()};
+        var phone = ${codes.phoneParsingCode()};
+        return email + '\\t' + phone;
+    })();`;
+    copy(parsingCode);
 }
 
 chrome.commands.onCommand.addListener((command) => {
     console.log('Command:', command);
     if (command == "candidate-contact-load") {
         loadCandidateContact();
+    } else if (command == "candidate-all-copy") {
+        copyCandidateInfo();
     } else if (command == "candidate-email-copy") {
         copyCandidateEmail();
     } else if (command == "candidate-phone-copy") {
