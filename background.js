@@ -15,7 +15,7 @@ chrome.runtime.onInstalled.addListener(() => {
 });
 
 
-function changeColor() {
+function loadCandidateContact() {
     chrome.tabs.query({active: true, currentWindow: true}, (tabs) => {
         const color = 'black';
         const uuid = 'this-is-the-unique-id-sjasldfhb';
@@ -44,6 +44,6 @@ hdsearch
 chrome.commands.onCommand.addListener(function (command) {
     console.log('Command:', command);
     if (command == "candidate-contact-load") {
-        changeColor();
+        loadCandidateContact();
     }
 });
