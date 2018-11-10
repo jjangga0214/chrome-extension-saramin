@@ -1,6 +1,6 @@
 {
   "name": "saramin",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "saramin의 버그를 수정하고, 필요시 기능을 확장하기 위함.\n[github](https://github.com/jjangga0214/chrome-extension-saramin)",
   "permissions": [
     "activeTab",
