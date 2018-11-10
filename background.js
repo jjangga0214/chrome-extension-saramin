@@ -24,6 +24,14 @@ function changeColor() {
         const newBtn = '<button style="display: none" id="${uuid}" onclick="${callOnOriginalContext}">click this</button>';
         document.querySelector('body').innerHTML += newBtn;
         document.querySelector('#${uuid}').click();`;
+
+        code = `
+        (function(){
+            const command = document.querySelector('a[href^="javascript:useMandb("]').href.substr(11);
+            const newBtn = '<button style="display: none" id="${uuid}" onclick="'+command+'">click this</button>';
+            document.querySelector('body').innerHTML += newBtn;
+            document.querySelector('#${uuid}').click();
+        })();`;
         chrome.tabs.executeScript(
             tabs[0].id,
             {code});
